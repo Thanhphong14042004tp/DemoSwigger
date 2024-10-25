@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Danh sách người dùng</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container">
+  <h1 class="text-center">Danh sách Người Dùng</h1>
+
+  <a href="/users/add" class="btn btn-primary mb-3">Thêm Người Dùng</a>
+
+  <table class="table table-bordered">
+    <thead>
+    <tr>
+      <th>Họ</th>
+      <th>Tên</th>
+      <th>Email</th>
+      <th>Số Điện Thoại</th>
+      <th>Địa Chỉ</th>
+      <th>Thành Phố</th>
+      <th>Chức Năng</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="user : ${users}">
+      <td th:text="${user.firstName}"></td>
+      <td th:text="${user.lastName}"></td>
+      <td th:text="${user.email}"></td>
+      <td th:text="${user.phoneNumber}"></td>
+      <td th:text="${user.address}"></td>
+      <td th:text="${user.city}"></td>
+      <td>
+        <a th:href="@{/users/edit/{id}(id=${user.userId})}" class="btn btn-warning">Sửa</a>
+        <a th:href="@{/users/delete/{id}(id=${user.userId})}" class="btn btn-danger"
+           onclick="return confirm('Bạn có chắc chắn muốn xóa?')">Xóa</a>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+</body>
+</html>

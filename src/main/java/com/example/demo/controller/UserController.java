@@ -15,7 +15,7 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    @GetMapping
+    @GetMapping()
     public List<User> getAllUsers() {
         return userService.getAllUsers();
     }
@@ -47,5 +47,6 @@ public class UserController {
     public ResponseEntity<Void> deleteUser(@PathVariable Long id) {
         userService.deleteUser(id);
         return ResponseEntity.noContent().build();
+
     }
 }
